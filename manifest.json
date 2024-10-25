@@ -1,0 +1,36 @@
+{
+    "manifest_version": 2,
+    "name": "Confirm YouTube Logout",
+    "version": "1.0",
+    "description": "Makes you confirm if you want to logout on YouTube",
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": true
+    },
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "notifications",
+        "tabs",
+        "*://accounts.google.com/Logout*",
+        "*://mail.google.com/mail/u/0/?logout*",
+        "*://www.youtube.com/logout*",
+        "*://drive.google.com/logout*",
+        "*://photos.google.com/logout*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://accounts.google.com/Logout*",
+                "*://mail.google.com/mail/u/*/?logout*",
+                "*://www.youtube.com/logout*",
+                "*://drive.google.com/logout*",
+                "*://photos.google.com/logout*"
+            ],
+            "js": ["content.js"]
+        }
+    ],
+    "icons": {
+        "512": "icon.png"
+    }
+}
